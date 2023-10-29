@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import MainAlbums from "./components/albums/MainAlbums";
+import MainLayouts from "./components/layouts/MainLayouts";
+import InvalidPage from "./components/invalidPage/InvalidPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* yang dikomen berhubungan dengan childen di MainLayouts.js */}
+      <MainLayouts>
+        <Router>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <h1 className="text-4xl mt-10 font-bold items-center justify-center text-center">
+                  HOMEPAGE
+                </h1>
+              }
+            />
+            <Route path="/albums" element={<MainAlbums />} />
+            <Route path="*" element={<InvalidPage />} />
+          </Routes>
+        </Router>
+      </MainLayouts>
+    </>
   );
 }
 
